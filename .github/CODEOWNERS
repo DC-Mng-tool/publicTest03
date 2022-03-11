@@ -1,0 +1,101 @@
+file01.txt @tanaka-mizuho
+
+# This is a comment.
+# Each line is a file pattern followed by one or more owners.
+# これはコメントです。
+# 各行はファイルのパターンに続いて、1つ以上のオーナーが書かれています。
+
+# These owners will be the default owners for everything in
+# the repo. Unless a later match takes precedence,
+# @global-owner1 and @global-owner2 will be requested for
+# review when someone opens a pull request.
+*       @global-owner1 @global-owner2
+
+# これらの所有者は、レポ内のすべてのもののデフォルトの所有者となります。
+# 後のマッチングが優先されない限り、誰かがプルリクエストを開いたときに 
+# @global-owner1 と @global-owner2 がレビューのために要求されることになります。
+* @global-owner1 @global-owner2
+
+# Order is important; the last matching pattern takes the most
+# precedence. When someone opens a pull request that only
+# modifies JS files, only @js-owner and not the global
+# owner(s) will be requested for a review.
+*.js    @js-owner
+
+# 順番は重要で、最後にマッチしたパターンが最も優先されます。
+# 誰かがJSファイルのみを変更するプルリクエストを開いたとき、
+# グローバルオーナーではなく @js-owner のみにレビューが要求されます。
+
+# You can also use email addresses if you prefer. They'll be
+# used to look up users just like we do for commit author
+# emails.
+*.go docs@example.com
+
+# ご希望であれば、メールアドレスを使用することも可能です。
+# このメールアドレスは、コミット作成者のメールアドレスと同じように、ユーザーを探すために使用されます。
+*.go docs@example.com
+
+
+
+# Teams can be specified as code owners as well. Teams should
+# be identified in the format @org/team-name. Teams must have
+# explicit write access to the repository. In this example,
+# the octocats team in the octo-org organization owns all .txt files.
+*.txt @octo-org/octocats
+
+# チームもコードオーナーとして指定することができます。
+# チームは@org/team-nameの形式で識別されなければなりません。
+# チームはリポジトリへの明示的な書き込み権限を持っている必要があります。
+# この例では octo-org 組織の octocats チームは、すべての .txt ファイルを所有します。
+*.txt @octo-org/octocats
+
+# In this example, @doctocat owns any files in the build/logs
+# directory at the root of the repository and any of its
+# subdirectories.
+/build/logs/ @doctocat
+
+# この例では、@doctocat はリポジトリのルートにある build/logs ディレクトリとそのサブディレクトリにあるすべてのファイルを所有します。
+/build/logs/ @doctocat
+
+# The `docs/*` pattern will match files like
+# `docs/getting-started.md` but not further nested files like
+# `docs/build-app/troubleshooting.md`.
+docs/*  docs@example.com
+
+#「docs/*」パターンは、「docs/getting-started.md」のようなファイルにマッチしますが
+#「docs/build-app/troubleshooting.md」 のようにさらにネストしたファイルにはマッチしません。
+docs/* docs@example.com
+
+
+# In this example, @octocat owns any file in an apps directory
+# anywhere in your repository.
+apps/ @octocat
+
+# この例では、@octocatはリポジトリ内の任意の場所のappsディレクトリにあるすべてのファイルを所有します。
+apps/ @octocat
+
+# In this example, @doctocat owns any file in the `/docs`
+# directory in the root of your repository and any of its
+# subdirectories.
+/docs/ @doctocat
+
+#この例では、@doctocat はリポジトリのルートにある `/docs` ディレクトリとそのサブディレクトリにあるすべてのファイルを所有します。
+/docs/ @doctocat
+
+# In this example, any change inside the `/scripts` directory
+# will require approval from @doctocat or @octocat.
+/scripts/ @doctocat @octocat
+
+#この例では、`/scripts`ディレクトリ内の変更は、@doctocatまたは@octocatの承認が必要です。
+/scripts/ @doctocat @octocat
+
+
+# In this example, @octocat owns any file in the `/apps`
+# directory in the root of your repository except for the `/apps/github`
+# subdirectory, as its owners are left empty.
+/apps/ @octocat
+/apps/github
+#この例では、@octocat はリポジトリのルートにある 「/apps」ディレクトリ内の 「/apps/github」を除いたすべてのファイルを所有します。
+# サブディレクトリのオーナーは空のままです。
+/apps/ @octocat
+/apps/github
